@@ -1,0 +1,14 @@
+# Sample plugin
+ru:
+  project_module_redmine_issue_sla: Issues SLA
+  label_issue_sla: Issues SLA
+  field_allowed_delay: Разрешенная задержка
+  field_expiration_date: Истечение срока
+  field_expiration: Истечение срока
+  field_issue_sla: Issue SLA
+  field_update_by_manager_date: Обновлено менеджером
+  expiration_status_overdue: Опоздание
+  expiration_status_replied: Отвечено
+  expiration_status_expires_in_x_time: Истечение в  %{value}
+  expiration_status_x_time_overdue: '%{value} опоздание'
+  expiration_status_replied_in_x_time: Отвечено в %{value}
