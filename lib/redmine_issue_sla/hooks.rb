@@ -32,7 +32,7 @@ module RedmineIssueSla
 
         previous_values = issue.attributes_before_change
 
-        if user.allowed_to?(:add_issues, issue.project) && (issue.new_record? || issue.priority_id != previous_values['priority_id'])
+        if user.allowed_to?(:add_issues, issue.project) && (issue.new_record? ||issue.closed?)
             sla = issue.priority_issue_sla
             if sla && sla.allowed_delay.present?
               attrs = { :expiration_date => sla.allowed_delay.hours.from_now.round, :issue_sla => sla.allowed_delay }
@@ -41,7 +41,7 @@ module RedmineIssueSla
             end
         end
 
-        if user.allowed_to?(:be_project_manager, issue.project) && (issue.new_record? || issue.status_id != previous_values['status_id'])
+        if user.allowed_to?(:be_project_manager, issue.project) && issue.closed?
           attrs = { :first_response_date => Time.now.round }
           issue.assign_attributes attrs, :without_protection => true
           previous_values['first_response_date'] = issue.first_response_date if previous_values
